@@ -1,0 +1,1694 @@
+$ docker scout cves --platform linux/amd64 registry://thiagoms02/flags-api:1.0.0
+
+    i New version 1.29.0 available (installed version is 1.27.0) at https://github.com/docker/scout-cli
+    v SBOM of image already cached, 354 packages indexed
+    x Detected 27 vulnerable packages with a total of 75 vulnerabilities
+
+
+## Overview
+
+                   │                 Analyzed Image                 
+───────────────────┼────────────────────────────────────────────────
+ Target            │  registry://thiagoms02/flags-api:1.0.0         
+   digest          │  3ec5a49faebe                                  
+   platform        │ linux/amd64                                    
+   provenance      │ https://github.com/Thiagoms-py/docker-node-api 
+                   │  https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82      
+   vulnerabilities │    0C    18H    19M    39L                     
+   size            │ 81 MB                                          
+   packages        │ 354                                            
+                   │                                                
+ Base image        │  node:22-bookworm-slim                         
+                   │  5ec23b7c622b                                  
+
+
+## Packages and Vulnerabilities
+
+   0C     5H     2M     0L  brace-expansion 2.0.2
+pkg:npm/brace-expansion@2.0.2
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-13149 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-13149?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.2
+      Affected range : >=2.0.0                                                                                           
+                     : <2.1.2                                                                                            
+      Fixed version  : 2.1.2                                                                                             
+      CVSS Score     : 7.7                                                                                               
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P/S:N/AU:Y/R:U/V:D/RE:M/U:Amber 
+    
+    x HIGH CVE-2026-69152 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-69152?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.4
+      Affected range : >=2.0.0                                      
+                     : <2.1.4                                       
+      Fixed version  : 2.1.4                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-14257 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-14257?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.3
+      Affected range : >=2.0.0                                      
+                     : <2.1.3                                       
+      Fixed version  : 5.0.8                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-102278 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-102278?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.6
+      Affected range : >=2.0.0                                      
+                     : <2.1.6                                       
+      Fixed version  : 2.1.6                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-102276 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-102276?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.5
+      Affected range : >=2.0.0                                      
+                     : <2.1.5                                       
+      Fixed version  : 2.1.5                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x MEDIUM CVE-2026-33750 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-33750?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.0.3
+      Affected range : >=2.0.0                                      
+                     : <2.0.3                                       
+      Fixed version  : 5.0.5                                        
+      CVSS Score     : 6.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H 
+    
+    x MEDIUM CVE-2026-102277 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-102277?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.7
+      Affected range : >=2.0.0                                      
+                     : <2.1.7                                       
+      Fixed version  : 2.1.7                                        
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L 
+    
+
+   0C     3H     1M     2L  util-linux 2.38.1-5+deb12u3
+pkg:deb/debian/util-linux@2.38.1-5%2Bdeb12u3?arch=amd64&distro=debian-12.15
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-53615
+      https://scout.docker.com/v/CVE-2026-53615?s=debian&n=util-linux&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x HIGH CVE-2026-78410
+      https://scout.docker.com/v/CVE-2026-78410?s=debian&n=util-linux&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x HIGH CVE-2026-53613
+      https://scout.docker.com/v/CVE-2026-53613?s=debian&n=util-linux&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x MEDIUM CVE-2026-13595
+      https://scout.docker.com/v/CVE-2026-13595?s=debian&n=util-linux&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2025-14104
+      https://scout.docker.com/v/CVE-2025-14104?s=debian&n=util-linux&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2022-0563
+      https://scout.docker.com/v/CVE-2022-0563?s=debian&n=util-linux&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     2H     0M     0L  zlib1g 1:1.2.13.dfsg-1
+pkg:deb/debian/zlib1g@1%3A1.2.13.dfsg-1?arch=amd64&distro=debian-12.15&upstream=zlib
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-85091
+      https://scout.docker.com/v/CVE-2026-85091?s=debian&n=zlib&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x HIGH CVE-2026-76844
+      https://scout.docker.com/v/CVE-2026-76844?s=debian&n=zlib&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     1H     5M     0L  ip-address 10.1.0
+pkg:npm/ip-address@10.1.0
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-69192 [Improper Input Validation]
+      https://scout.docker.com/v/CVE-2026-69192?s=github&n=ip-address&t=npm&vr=%3C%3D10.3.0
+      Affected range : <=10.3.0                                                        
+      Fixed version  : 10.3.1                                                          
+      CVSS Score     : 7.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-111997 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-111997?s=github&n=ip-address&t=npm&vr=%3C%3D10.7.3
+      Affected range : <=10.7.3                                                        
+      Fixed version  : 10.7.4                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-101913 [Incorrect Comparison]
+      https://scout.docker.com/v/CVE-2026-101913?s=github&n=ip-address&t=npm&vr=%3C%3D10.5.0
+      Affected range : <=10.5.0                                                        
+      Fixed version  : 10.5.1                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-101912 [Incorrect Comparison]
+      https://scout.docker.com/v/CVE-2026-101912?s=github&n=ip-address&t=npm&vr=%3C%3D10.7.0
+      Affected range : <=10.7.0                                                        
+      Fixed version  : 10.7.1                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-101911 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-101911?s=github&n=ip-address&t=npm&vr=%3C%3D10.7.0
+      Affected range : <=10.7.0                                                        
+      Fixed version  : 10.7.1                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-42338 [Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')]
+      https://scout.docker.com/v/CVE-2026-42338?s=github&n=ip-address&t=npm&vr=%3C%3D10.1.0
+      Affected range : <=10.1.0                                                        
+      Fixed version  : 10.1.1                                                          
+      CVSS Score     : 5.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N 
+    
+
+   0C     1H     1M     9L  libc6 2.36-9+deb12u14
+pkg:deb/debian/libc6@2.36-9%2Bdeb12u14?arch=amd64&distro=debian-12.15&upstream=glibc
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-84243
+      https://scout.docker.com/v/CVE-2026-84243?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x MEDIUM CVE-2026-86805
+      https://scout.docker.com/v/CVE-2026-86805?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-97399
+      https://scout.docker.com/v/CVE-2026-97399?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-95818
+      https://scout.docker.com/v/CVE-2026-95818?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2019-9192
+      https://scout.docker.com/v/CVE-2019-9192?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2019-1010025
+      https://scout.docker.com/v/CVE-2019-1010025?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2019-1010024
+      https://scout.docker.com/v/CVE-2019-1010024?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2019-1010023
+      https://scout.docker.com/v/CVE-2019-1010023?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2019-1010022
+      https://scout.docker.com/v/CVE-2019-1010022?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2018-20796
+      https://scout.docker.com/v/CVE-2018-20796?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2010-4756
+      https://scout.docker.com/v/CVE-2010-4756?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     1H     1M     2L  perl-base 5.36.0-7+deb12u4
+pkg:deb/debian/perl-base@5.36.0-7%2Bdeb12u4?arch=amd64&distro=debian-12.15&upstream=perl
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-82560
+      https://scout.docker.com/v/CVE-2026-82560?s=debian&n=perl&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x MEDIUM CVE-2026-15534
+      https://scout.docker.com/v/CVE-2026-15534?s=debian&n=perl&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2023-31486
+      https://scout.docker.com/v/CVE-2023-31486?s=debian&n=perl&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2011-4116
+      https://scout.docker.com/v/CVE-2011-4116?s=debian&n=perl&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     1H     1M     0L  picomatch 4.0.3
+pkg:npm/picomatch@4.0.3
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-33671 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-33671?s=github&n=picomatch&t=npm&vr=%3E%3D4.0.0%2C%3C4.0.4
+      Affected range : >=4.0.0                                      
+                     : <4.0.4                                       
+      Fixed version  : 4.0.4                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x MEDIUM CVE-2026-33672 [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')]
+      https://scout.docker.com/v/CVE-2026-33672?s=github&n=picomatch&t=npm&vr=%3E%3D4.0.0%2C%3C4.0.4
+      Affected range : >=4.0.0                                      
+                     : <4.0.4                                       
+      Fixed version  : 4.0.4                                        
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N 
+    
+
+   0C     1H     0M     0L  body-parser 2.3.0
+pkg:npm/body-parser@2.3.0
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L54-L57
+RUN --mount=type=cache,target=/root/.npm \
+    npm pkg set overrides.proxy-addr=2.0.8 \
+    && npm install --package-lock-only --ignore-scripts --no-audit --no-fund \
+    && npm ci --omit=dev --no-audit --no-fund
+
+    x HIGH CVE-2026-111181 [Uncaught Exception]
+      https://scout.docker.com/v/CVE-2026-111181?s=github&n=body-parser&t=npm&vr=%3E%3D2.0.0%2C%3C2.4.0
+      Affected range : >=2.0.0                                      
+                     : <2.4.0                                       
+      Fixed version  : 2.4.0                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+   0C     1H     0M     0L  pacote 20.0.1
+pkg:npm/pacote@20.0.1
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-9496 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-9496?s=github&n=pacote&t=npm&vr=%3E%3D11.2.7%2C%3C21.5.1
+      Affected range : >=11.2.7                                                            
+                     : <21.5.1                                                             
+      Fixed version  : 21.5.1                                                              
+      CVSS Score     : 7.7                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P 
+    
+
+   0C     1H     0M     0L  sigstore 3.1.0
+pkg:npm/sigstore@3.1.0
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-48815 [Improper Verification of Cryptographic Signature]
+      https://scout.docker.com/v/CVE-2026-48815?s=github&n=sigstore&t=npm&vr=%3C%3D4.1.0
+      Affected range : <=4.1.0                                      
+      Fixed version  : 4.1.1                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N 
+    
+
+   0C     1H     0M     0L  pacote 19.0.2
+pkg:npm/pacote@19.0.2
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-9496 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-9496?s=github&n=pacote&t=npm&vr=%3E%3D11.2.7%2C%3C21.5.1
+      Affected range : >=11.2.7                                                            
+                     : <21.5.1                                                             
+      Fixed version  : 21.5.1                                                              
+      CVSS Score     : 7.7                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P 
+    
+
+   0C     0H     3M     0L  qs 6.15.3
+pkg:npm/qs@6.15.3
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L54-L57
+RUN --mount=type=cache,target=/root/.npm \
+    npm pkg set overrides.proxy-addr=2.0.8 \
+    && npm install --package-lock-only --ignore-scripts --no-audit --no-fund \
+    && npm ci --omit=dev --no-audit --no-fund
+
+    x MEDIUM CVE-2026-82562 [Allocation of Resources Without Limits or Throttling]
+      https://scout.docker.com/v/CVE-2026-82562?s=github&n=qs&t=npm&vr=%3E%3D6.14.2%2C%3C%3D6.15.3
+      Affected range : >=6.14.2                                                        
+                     : <=6.15.3                                                        
+      Fixed version  : 6.16.0                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-82417 [Uncaught Exception]
+      https://scout.docker.com/v/CVE-2026-82417?s=github&n=qs&t=npm&vr=%3E%3D2.2.5%2C%3C6.16.0
+      Affected range : >=2.2.5                                                         
+                     : <6.16.0                                                         
+      Fixed version  : 6.16.0                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-110816 [Uncaught Exception]
+      https://scout.docker.com/v/CVE-2026-110816?s=github&n=qs&t=npm&vr=%3E%3D6.7.0%2C%3C%3D6.16.0
+      Affected range : >=6.7.0                                                         
+                     : <=6.16.0                                                        
+      Fixed version  : 6.16.1                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+
+   0C     0H     1M     1L  tar 1.34+dfsg-1.2+deb12u1
+pkg:deb/debian/tar@1.34%2Bdfsg-1.2%2Bdeb12u1?arch=amd64&distro=debian-12.15
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x MEDIUM CVE-2025-45582
+      https://scout.docker.com/v/CVE-2025-45582?s=debian&n=tar&ns=debian&t=deb&osn=debian&osv=12&vr=%3E%3D1.34%2Bdfsg-1.2%2Bdeb12u1
+      Affected range : >=1.34+dfsg-1.2+deb12u1 
+      Fixed version  : not fixed               
+    
+    x LOW CVE-2005-2541
+      https://scout.docker.com/v/CVE-2005-2541?s=debian&n=tar&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     1M     1L  postcss-selector-parser 7.1.1
+pkg:npm/postcss-selector-parser@7.1.1
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x MEDIUM CVE-2026-104844 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-104844?s=github&n=postcss-selector-parser&t=npm&vr=%3E%3D7.0.0%2C%3C7.1.6
+      Affected range : >=7.0.0                                      
+                     : <7.1.6                                       
+      Fixed version  : 7.1.6                                        
+      CVSS Score     : 5.9                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x LOW CVE-2026-9358 [Improper Resource Shutdown or Release]
+      https://scout.docker.com/v/CVE-2026-9358?s=github&n=postcss-selector-parser&t=npm&vr=%3E%3D7.1.0%2C%3C7.1.3
+      Affected range : >=7.1.0                                                             
+                     : <7.1.3                                                              
+      Fixed version  : 7.1.3                                                               
+      CVSS Score     : 2.1                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P 
+    
+
+   0C     0H     1M     0L  @sigstore/core 2.0.0
+pkg:npm/%40sigstore/core@2.0.0
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x MEDIUM CVE-2026-48758 [Improper Verification of Cryptographic Signature]
+      https://scout.docker.com/v/CVE-2026-48758?s=github&n=core&ns=%40sigstore&t=npm&vr=%3C%3D3.2.0
+      Affected range : <=3.2.0                                      
+      Fixed version  : 3.2.1                                        
+      CVSS Score     : 5.4                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L 
+    
+
+   0C     0H     1M     0L  glob 10.5.0
+pkg:npm/glob@10.5.0
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x MEDIUM CVE-2026-118773 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-118773?s=github&n=glob&t=npm&vr=%3E%3D9.0.0%2C%3C%3D14.0.1
+      Affected range : >=9.0.0                                                         
+                     : <=14.0.1                                                        
+      Fixed version  : 14.0.2                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+
+   0C     0H     1M     0L  minimatch 9.0.9
+pkg:npm/minimatch@9.0.9
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x MEDIUM CVE-2026-118764 [Asymmetric Resource Consumption (Amplification)]
+      https://scout.docker.com/v/CVE-2026-118764?s=github&n=minimatch&t=npm&vr=%3E%3D7.0.0%2C%3C11.0.1
+      Affected range : >=7.0.0                                                         
+                     : <11.0.1                                                         
+      Fixed version  : 11.0.1                                                          
+      CVSS Score     : 6.9                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+
+   0C     0H     0M     7L  libgnutls30 3.7.9-2+deb12u7
+pkg:deb/debian/libgnutls30@3.7.9-2%2Bdeb12u7?arch=amd64&distro=debian-12.15&upstream=gnutls28
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2026-95210
+      https://scout.docker.com/v/CVE-2026-95210?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-95209
+      https://scout.docker.com/v/CVE-2026-95209?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-95184
+      https://scout.docker.com/v/CVE-2026-95184?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-88648
+      https://scout.docker.com/v/CVE-2026-88648?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-88647
+      https://scout.docker.com/v/CVE-2026-88647?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-67693
+      https://scout.docker.com/v/CVE-2026-67693?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2011-3389
+      https://scout.docker.com/v/CVE-2011-3389?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     4L  coreutils 9.1-1
+pkg:deb/debian/coreutils@9.1-1?arch=amd64&distro=debian-12.15
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2026-56392
+      https://scout.docker.com/v/CVE-2026-56392?s=debian&n=coreutils&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-56391
+      https://scout.docker.com/v/CVE-2026-56391?s=debian&n=coreutils&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2025-5278
+      https://scout.docker.com/v/CVE-2025-5278?s=debian&n=coreutils&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2017-18018
+      https://scout.docker.com/v/CVE-2017-18018?s=debian&n=coreutils&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     4L  libudev1 252.39-1~deb12u2
+pkg:deb/debian/libudev1@252.39-1~deb12u2?arch=amd64&distro=debian-12.15&upstream=systemd
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2023-31439
+      https://scout.docker.com/v/CVE-2023-31439?s=debian&n=systemd&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2023-31438
+      https://scout.docker.com/v/CVE-2023-31438?s=debian&n=systemd&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2023-31437
+      https://scout.docker.com/v/CVE-2023-31437?s=debian&n=systemd&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2013-4392
+      https://scout.docker.com/v/CVE-2013-4392?s=debian&n=systemd&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     2L  dash 0.5.12-2
+pkg:deb/debian/dash@0.5.12-2?arch=amd64&distro=debian-12.15
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2026-102474
+      https://scout.docker.com/v/CVE-2026-102474?s=debian&n=dash&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-102473
+      https://scout.docker.com/v/CVE-2026-102473?s=debian&n=dash&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     2L  libgcrypt20 1.10.1-3+deb12u1
+pkg:deb/debian/libgcrypt20@1.10.1-3%2Bdeb12u1?arch=amd64&distro=debian-12.15
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2024-2236
+      https://scout.docker.com/v/CVE-2024-2236?s=debian&n=libgcrypt20&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2018-6829
+      https://scout.docker.com/v/CVE-2018-6829?s=debian&n=libgcrypt20&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     1L  libstdc++6 12.2.0-14+deb12u1
+pkg:deb/debian/libstdc%2B%2B6@12.2.0-14%2Bdeb12u1?arch=amd64&distro=debian-12.15&upstream=gcc-12
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2022-27943
+      https://scout.docker.com/v/CVE-2022-27943?s=debian&n=gcc-12&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     1L  gpgv 2.2.40-1.1+deb12u2
+pkg:deb/debian/gpgv@2.2.40-1.1%2Bdeb12u2?arch=amd64&distro=debian-12.15&upstream=gnupg2
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2022-3219
+      https://scout.docker.com/v/CVE-2022-3219?s=debian&n=gnupg2&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     1L  diffutils 1:3.8-4
+pkg:deb/debian/diffutils@1%3A3.8-4?arch=amd64&distro=debian-12.15
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2026-53910
+      https://scout.docker.com/v/CVE-2026-53910?s=debian&n=diffutils&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     1L  passwd 1:4.13+dfsg1-1+deb12u2
+pkg:deb/debian/passwd@1%3A4.13%2Bdfsg1-1%2Bdeb12u2?arch=amd64&distro=debian-12.15&upstream=shadow
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2007-5686
+      https://scout.docker.com/v/CVE-2007-5686?s=debian&n=shadow&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     1L  libapt-pkg6.0 2.6.2
+pkg:deb/debian/libapt-pkg6.0@2.6.2?arch=amd64&distro=debian-12.15&upstream=apt
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L25-L38
+FROM --platform=$BUILDPLATFORM ${NODE_IMAGE} AS build
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+COPY tsconfig.json ./
+COPY src ./src
+
+RUN npm run build
+
+
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2011-3374
+      https://scout.docker.com/v/CVE-2011-3374?s=debian&n=apt&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+
+76 vulnerabilities found in 27 packages
+  CRITICAL  0  
+  HIGH      18 
+  MEDIUM    19 
+  LOW       39 
+
+
+What's next:
+    View base image update recommendations → docker scout recommendations registry://thiagoms02/flags-api:1.0.0
+
+
+
+$ docker scout cves --platform linux/arm64 registry://thiagoms02/flags-api:1.0.0
+
+    i New version 1.29.0 available (installed version is 1.27.0) at https://github.com/docker/scout-cli
+    v SBOM obtained from attestation, 354 packages found
+    v Provenance obtained from attestation
+    x Detected 27 vulnerable packages with a total of 75 vulnerabilities
+
+
+## Overview
+
+                   │                 Analyzed Image                 
+───────────────────┼────────────────────────────────────────────────
+ Target            │  registry://thiagoms02/flags-api:1.0.0         
+   digest          │  d2bbeb3fc7db                                  
+   platform        │ linux/arm64                                    
+   provenance      │ https://github.com/Thiagoms-py/docker-node-api 
+                   │  https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82      
+   vulnerabilities │    0C    18H    19M    39L                     
+   size            │ 81 MB                                          
+   packages        │ 354                                            
+                   │                                                
+ Base image        │  node:22-bookworm-slim                         
+                   │  5ec23b7c622b                                  
+
+
+## Packages and Vulnerabilities
+
+   0C     5H     2M     0L  brace-expansion 2.0.2
+pkg:npm/brace-expansion@2.0.2
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-13149 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-13149?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.2
+      Affected range : >=2.0.0                                                                                           
+                     : <2.1.2                                                                                            
+      Fixed version  : 2.1.2                                                                                             
+      CVSS Score     : 7.7                                                                                               
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P/S:N/AU:Y/R:U/V:D/RE:M/U:Amber 
+    
+    x HIGH CVE-2026-69152 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-69152?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.4
+      Affected range : >=2.0.0                                      
+                     : <2.1.4                                       
+      Fixed version  : 2.1.4                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-14257 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-14257?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.3
+      Affected range : >=2.0.0                                      
+                     : <2.1.3                                       
+      Fixed version  : 5.0.8                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-102278 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-102278?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.6
+      Affected range : >=2.0.0                                      
+                     : <2.1.6                                       
+      Fixed version  : 2.1.6                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-102276 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-102276?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.5
+      Affected range : >=2.0.0                                      
+                     : <2.1.5                                       
+      Fixed version  : 2.1.5                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x MEDIUM CVE-2026-33750 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-33750?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.0.3
+      Affected range : >=2.0.0                                      
+                     : <2.0.3                                       
+      Fixed version  : 5.0.5                                        
+      CVSS Score     : 6.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H 
+    
+    x MEDIUM CVE-2026-102277 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-102277?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C2.1.7
+      Affected range : >=2.0.0                                      
+                     : <2.1.7                                       
+      Fixed version  : 2.1.7                                        
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L 
+    
+
+   0C     3H     1M     2L  util-linux 2.38.1-5+deb12u3
+pkg:deb/debian/util-linux@2.38.1-5%2Bdeb12u3?arch=arm64&distro=debian-12.15
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-53615
+      https://scout.docker.com/v/CVE-2026-53615?s=debian&n=util-linux&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x HIGH CVE-2026-78410
+      https://scout.docker.com/v/CVE-2026-78410?s=debian&n=util-linux&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x HIGH CVE-2026-53613
+      https://scout.docker.com/v/CVE-2026-53613?s=debian&n=util-linux&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x MEDIUM CVE-2026-13595
+      https://scout.docker.com/v/CVE-2026-13595?s=debian&n=util-linux&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2025-14104
+      https://scout.docker.com/v/CVE-2025-14104?s=debian&n=util-linux&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2022-0563
+      https://scout.docker.com/v/CVE-2022-0563?s=debian&n=util-linux&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     2H     0M     0L  zlib1g 1:1.2.13.dfsg-1
+pkg:deb/debian/zlib1g@1%3A1.2.13.dfsg-1?arch=arm64&distro=debian-12.15&upstream=zlib
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-85091
+      https://scout.docker.com/v/CVE-2026-85091?s=debian&n=zlib&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x HIGH CVE-2026-76844
+      https://scout.docker.com/v/CVE-2026-76844?s=debian&n=zlib&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     1H     5M     0L  ip-address 10.1.0
+pkg:npm/ip-address@10.1.0
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-69192 [Improper Input Validation]
+      https://scout.docker.com/v/CVE-2026-69192?s=github&n=ip-address&t=npm&vr=%3C%3D10.3.0
+      Affected range : <=10.3.0                                                        
+      Fixed version  : 10.3.1                                                          
+      CVSS Score     : 7.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-111997 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-111997?s=github&n=ip-address&t=npm&vr=%3C%3D10.7.3
+      Affected range : <=10.7.3                                                        
+      Fixed version  : 10.7.4                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-101913 [Incorrect Comparison]
+      https://scout.docker.com/v/CVE-2026-101913?s=github&n=ip-address&t=npm&vr=%3C%3D10.5.0
+      Affected range : <=10.5.0                                                        
+      Fixed version  : 10.5.1                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-101912 [Incorrect Comparison]
+      https://scout.docker.com/v/CVE-2026-101912?s=github&n=ip-address&t=npm&vr=%3C%3D10.7.0
+      Affected range : <=10.7.0                                                        
+      Fixed version  : 10.7.1                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-101911 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-101911?s=github&n=ip-address&t=npm&vr=%3C%3D10.7.0
+      Affected range : <=10.7.0                                                        
+      Fixed version  : 10.7.1                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-42338 [Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')]
+      https://scout.docker.com/v/CVE-2026-42338?s=github&n=ip-address&t=npm&vr=%3C%3D10.1.0
+      Affected range : <=10.1.0                                                        
+      Fixed version  : 10.1.1                                                          
+      CVSS Score     : 5.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N 
+    
+
+   0C     1H     1M     9L  libc6 2.36-9+deb12u14
+pkg:deb/debian/libc6@2.36-9%2Bdeb12u14?arch=arm64&distro=debian-12.15&upstream=glibc
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-84243
+      https://scout.docker.com/v/CVE-2026-84243?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x MEDIUM CVE-2026-86805
+      https://scout.docker.com/v/CVE-2026-86805?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-97399
+      https://scout.docker.com/v/CVE-2026-97399?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-95818
+      https://scout.docker.com/v/CVE-2026-95818?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2019-9192
+      https://scout.docker.com/v/CVE-2019-9192?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2019-1010025
+      https://scout.docker.com/v/CVE-2019-1010025?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2019-1010024
+      https://scout.docker.com/v/CVE-2019-1010024?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2019-1010023
+      https://scout.docker.com/v/CVE-2019-1010023?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2019-1010022
+      https://scout.docker.com/v/CVE-2019-1010022?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2018-20796
+      https://scout.docker.com/v/CVE-2018-20796?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2010-4756
+      https://scout.docker.com/v/CVE-2010-4756?s=debian&n=glibc&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     1H     1M     2L  perl-base 5.36.0-7+deb12u4
+pkg:deb/debian/perl-base@5.36.0-7%2Bdeb12u4?arch=arm64&distro=debian-12.15&upstream=perl
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-82560
+      https://scout.docker.com/v/CVE-2026-82560?s=debian&n=perl&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x MEDIUM CVE-2026-15534
+      https://scout.docker.com/v/CVE-2026-15534?s=debian&n=perl&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2023-31486
+      https://scout.docker.com/v/CVE-2023-31486?s=debian&n=perl&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2011-4116
+      https://scout.docker.com/v/CVE-2011-4116?s=debian&n=perl&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     1H     1M     0L  picomatch 4.0.3
+pkg:npm/picomatch@4.0.3
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-33671 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-33671?s=github&n=picomatch&t=npm&vr=%3E%3D4.0.0%2C%3C4.0.4
+      Affected range : >=4.0.0                                      
+                     : <4.0.4                                       
+      Fixed version  : 4.0.4                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x MEDIUM CVE-2026-33672 [Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')]
+      https://scout.docker.com/v/CVE-2026-33672?s=github&n=picomatch&t=npm&vr=%3E%3D4.0.0%2C%3C4.0.4
+      Affected range : >=4.0.0                                      
+                     : <4.0.4                                       
+      Fixed version  : 4.0.4                                        
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N 
+    
+
+   0C     1H     0M     0L  body-parser 2.3.0
+pkg:npm/body-parser@2.3.0
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L59-L59
+COPY --from=build --chown=node:node /app/dist ./dist
+
+    x HIGH CVE-2026-111181 [Uncaught Exception]
+      https://scout.docker.com/v/CVE-2026-111181?s=github&n=body-parser&t=npm&vr=%3E%3D2.0.0%2C%3C2.4.0
+      Affected range : >=2.0.0                                      
+                     : <2.4.0                                       
+      Fixed version  : 2.4.0                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+   0C     1H     0M     0L  sigstore 3.1.0
+pkg:npm/sigstore@3.1.0
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-48815 [Improper Verification of Cryptographic Signature]
+      https://scout.docker.com/v/CVE-2026-48815?s=github&n=sigstore&t=npm&vr=%3C%3D4.1.0
+      Affected range : <=4.1.0                                      
+      Fixed version  : 4.1.1                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N 
+    
+
+   0C     1H     0M     0L  pacote 19.0.2
+pkg:npm/pacote@19.0.2
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-9496 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-9496?s=github&n=pacote&t=npm&vr=%3E%3D11.2.7%2C%3C21.5.1
+      Affected range : >=11.2.7                                                            
+                     : <21.5.1                                                             
+      Fixed version  : 21.5.1                                                              
+      CVSS Score     : 7.7                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P 
+    
+
+   0C     1H     0M     0L  pacote 20.0.1
+pkg:npm/pacote@20.0.1
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x HIGH CVE-2026-9496 [Inefficient Regular Expression Complexity]
+      https://scout.docker.com/v/CVE-2026-9496?s=github&n=pacote&t=npm&vr=%3E%3D11.2.7%2C%3C21.5.1
+      Affected range : >=11.2.7                                                            
+                     : <21.5.1                                                             
+      Fixed version  : 21.5.1                                                              
+      CVSS Score     : 7.7                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P 
+    
+
+   0C     0H     3M     0L  qs 6.15.3
+pkg:npm/qs@6.15.3
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L59-L59
+COPY --from=build --chown=node:node /app/dist ./dist
+
+    x MEDIUM CVE-2026-82562 [Allocation of Resources Without Limits or Throttling]
+      https://scout.docker.com/v/CVE-2026-82562?s=github&n=qs&t=npm&vr=%3E%3D6.14.2%2C%3C%3D6.15.3
+      Affected range : >=6.14.2                                                        
+                     : <=6.15.3                                                        
+      Fixed version  : 6.16.0                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-82417 [Uncaught Exception]
+      https://scout.docker.com/v/CVE-2026-82417?s=github&n=qs&t=npm&vr=%3E%3D2.2.5%2C%3C6.16.0
+      Affected range : >=2.2.5                                                         
+                     : <6.16.0                                                         
+      Fixed version  : 6.16.0                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-110816 [Uncaught Exception]
+      https://scout.docker.com/v/CVE-2026-110816?s=github&n=qs&t=npm&vr=%3E%3D6.7.0%2C%3C%3D6.16.0
+      Affected range : >=6.7.0                                                         
+                     : <=6.16.0                                                        
+      Fixed version  : 6.16.1                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+
+   0C     0H     1M     1L  postcss-selector-parser 7.1.1
+pkg:npm/postcss-selector-parser@7.1.1
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x MEDIUM CVE-2026-104844 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-104844?s=github&n=postcss-selector-parser&t=npm&vr=%3E%3D7.0.0%2C%3C7.1.6
+      Affected range : >=7.0.0                                      
+                     : <7.1.6                                       
+      Fixed version  : 7.1.6                                        
+      CVSS Score     : 5.9                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x LOW CVE-2026-9358 [Improper Resource Shutdown or Release]
+      https://scout.docker.com/v/CVE-2026-9358?s=github&n=postcss-selector-parser&t=npm&vr=%3E%3D7.1.0%2C%3C7.1.3
+      Affected range : >=7.1.0                                                             
+                     : <7.1.3                                                              
+      Fixed version  : 7.1.3                                                               
+      CVSS Score     : 2.1                                                                 
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P 
+    
+
+   0C     0H     1M     1L  tar 1.34+dfsg-1.2+deb12u1
+pkg:deb/debian/tar@1.34%2Bdfsg-1.2%2Bdeb12u1?arch=arm64&distro=debian-12.15
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x MEDIUM CVE-2025-45582
+      https://scout.docker.com/v/CVE-2025-45582?s=debian&n=tar&ns=debian&t=deb&osn=debian&osv=12&vr=%3E%3D1.34%2Bdfsg-1.2%2Bdeb12u1
+      Affected range : >=1.34+dfsg-1.2+deb12u1 
+      Fixed version  : not fixed               
+    
+    x LOW CVE-2005-2541
+      https://scout.docker.com/v/CVE-2005-2541?s=debian&n=tar&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     1M     0L  glob 10.5.0
+pkg:npm/glob@10.5.0
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x MEDIUM CVE-2026-118773 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-118773?s=github&n=glob&t=npm&vr=%3E%3D9.0.0%2C%3C%3D14.0.1
+      Affected range : >=9.0.0                                                         
+                     : <=14.0.1                                                        
+      Fixed version  : 14.0.2                                                          
+      CVSS Score     : 6.3                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+
+   0C     0H     1M     0L  minimatch 9.0.9
+pkg:npm/minimatch@9.0.9
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x MEDIUM CVE-2026-118764 [Asymmetric Resource Consumption (Amplification)]
+      https://scout.docker.com/v/CVE-2026-118764?s=github&n=minimatch&t=npm&vr=%3E%3D7.0.0%2C%3C11.0.1
+      Affected range : >=7.0.0                                                         
+                     : <11.0.1                                                         
+      Fixed version  : 11.0.1                                                          
+      CVSS Score     : 6.9                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N 
+    
+
+   0C     0H     1M     0L  @sigstore/core 2.0.0
+pkg:npm/%40sigstore/core@2.0.0
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x MEDIUM CVE-2026-48758 [Improper Verification of Cryptographic Signature]
+      https://scout.docker.com/v/CVE-2026-48758?s=github&n=core&ns=%40sigstore&t=npm&vr=%3C%3D3.2.0
+      Affected range : <=3.2.0                                      
+      Fixed version  : 3.2.1                                        
+      CVSS Score     : 5.4                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L 
+    
+
+   0C     0H     0M     7L  libgnutls30 3.7.9-2+deb12u7
+pkg:deb/debian/libgnutls30@3.7.9-2%2Bdeb12u7?arch=arm64&distro=debian-12.15&upstream=gnutls28
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2026-95210
+      https://scout.docker.com/v/CVE-2026-95210?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-95209
+      https://scout.docker.com/v/CVE-2026-95209?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-95184
+      https://scout.docker.com/v/CVE-2026-95184?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-88648
+      https://scout.docker.com/v/CVE-2026-88648?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-88647
+      https://scout.docker.com/v/CVE-2026-88647?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-67693
+      https://scout.docker.com/v/CVE-2026-67693?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2011-3389
+      https://scout.docker.com/v/CVE-2011-3389?s=debian&n=gnutls28&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     4L  coreutils 9.1-1
+pkg:deb/debian/coreutils@9.1-1?arch=arm64&distro=debian-12.15
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2026-56392
+      https://scout.docker.com/v/CVE-2026-56392?s=debian&n=coreutils&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-56391
+      https://scout.docker.com/v/CVE-2026-56391?s=debian&n=coreutils&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2025-5278
+      https://scout.docker.com/v/CVE-2025-5278?s=debian&n=coreutils&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2017-18018
+      https://scout.docker.com/v/CVE-2017-18018?s=debian&n=coreutils&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     4L  libudev1 252.39-1~deb12u2
+pkg:deb/debian/libudev1@252.39-1~deb12u2?arch=arm64&distro=debian-12.15&upstream=systemd
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2023-31439
+      https://scout.docker.com/v/CVE-2023-31439?s=debian&n=systemd&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2023-31438
+      https://scout.docker.com/v/CVE-2023-31438?s=debian&n=systemd&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2023-31437
+      https://scout.docker.com/v/CVE-2023-31437?s=debian&n=systemd&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2013-4392
+      https://scout.docker.com/v/CVE-2013-4392?s=debian&n=systemd&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     2L  dash 0.5.12-2
+pkg:deb/debian/dash@0.5.12-2?arch=arm64&distro=debian-12.15
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2026-102474
+      https://scout.docker.com/v/CVE-2026-102474?s=debian&n=dash&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2026-102473
+      https://scout.docker.com/v/CVE-2026-102473?s=debian&n=dash&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     2L  libgcrypt20 1.10.1-3+deb12u1
+pkg:deb/debian/libgcrypt20@1.10.1-3%2Bdeb12u1?arch=arm64&distro=debian-12.15
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2024-2236
+      https://scout.docker.com/v/CVE-2024-2236?s=debian&n=libgcrypt20&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+    x LOW CVE-2018-6829
+      https://scout.docker.com/v/CVE-2018-6829?s=debian&n=libgcrypt20&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     1L  libstdc++6 12.2.0-14+deb12u1
+pkg:deb/debian/libstdc%2B%2B6@12.2.0-14%2Bdeb12u1?arch=arm64&distro=debian-12.15&upstream=gcc-12
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2022-27943
+      https://scout.docker.com/v/CVE-2022-27943?s=debian&n=gcc-12&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     1L  gpgv 2.2.40-1.1+deb12u2
+pkg:deb/debian/gpgv@2.2.40-1.1%2Bdeb12u2?arch=arm64&distro=debian-12.15&upstream=gnupg2
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2022-3219
+      https://scout.docker.com/v/CVE-2022-3219?s=debian&n=gnupg2&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     1L  passwd 1:4.13+dfsg1-1+deb12u2
+pkg:deb/debian/passwd@1%3A4.13%2Bdfsg1-1%2Bdeb12u2?arch=arm64&distro=debian-12.15&upstream=shadow
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2007-5686
+      https://scout.docker.com/v/CVE-2007-5686?s=debian&n=shadow&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     1L  libapt-pkg6.0 2.6.2
+pkg:deb/debian/libapt-pkg6.0@2.6.2?arch=arm64&distro=debian-12.15&upstream=apt
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2011-3374
+      https://scout.docker.com/v/CVE-2011-3374?s=debian&n=apt&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+   0C     0H     0M     1L  diffutils 1:3.8-4
+pkg:deb/debian/diffutils@1%3A3.8-4?arch=arm64&distro=debian-12.15
+
+https://github.com/Thiagoms-py/docker-node-api/blob/315ab7f438d28d6f2c08ff591f721896f83d6a82/Dockerfile#L38-L38
+FROM ${NODE_IMAGE} AS production
+
+    x LOW CVE-2026-53910
+      https://scout.docker.com/v/CVE-2026-53910?s=debian&n=diffutils&ns=debian&t=deb&osn=debian&osv=12&vr=%3E0
+      Affected range : >0        
+      Fixed version  : not fixed 
+    
+
+
+76 vulnerabilities found in 27 packages
+  CRITICAL  0  
+  HIGH      18 
+  MEDIUM    19 
+  LOW       39 
+
+
+What's next:
+    View base image update recommendations → docker scout recommendations registry://thiagoms02/flags-api:1.0.0
+
+
+

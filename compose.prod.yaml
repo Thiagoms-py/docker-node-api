@@ -1,0 +1,52 @@
+name: flags-production
+
+services:
+  app:
+    image: thiagoms02/flags-api:1.0.0
+    restart: unless-stopped
+    cpus: 0.50
+    mem_limit: 256m
+    environment:
+      NODE_ENV: production
+      PORT: ${PORT}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - flags-network
+
+  db:
+    image: postgres:17.6-bookworm
+    restart: unless-stopped
+    cpus: 0.50
+    mem_limit: 512m
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - flags-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        ["CMD-SHELL", 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    networks:
+      - flags-network
+
+volumes:
+  flags-db-data:
+
+networks:
+  flags-network:
+    name: flags-prod-network
+    driver: bridge

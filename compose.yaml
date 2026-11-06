@@ -1,0 +1,90 @@
+services:
+  app:
+    image: flags-api:dev
+    build:
+      context: .
+      target: dev
+    init: true
+    command: ["sh", "-c", "npm run db:migrate && exec npm run dev"]
+    environment:
+      NODE_ENV: development
+      PORT: ${PORT}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    ports:
+      - "${PORT}:${PORT}"
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:' + (process.env.PORT || 3000) + '/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - flags-network
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+        - action: rebuild
+          path: ./package.json
+        - action: rebuild
+          path: ./package-lock.json
+        - action: rebuild
+          path: ./tsconfig.json
+
+  db:
+    image: postgres:17.6-bookworm
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - flags-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        ["CMD-SHELL", 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    networks:
+      - flags-network
+
+  adminer:
+    image: adminer:5.3.0
+    profiles:
+      - tools
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+    ports:
+      - "8081:8080"
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(@file_get_contents('http://127.0.0.1:8080/') === false ? 1 : 0);"]
+      interval: 5s
+      timeout: 10s
+      retries: 6
+      start_period: 60s
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - flags-network
+
+volumes:
+  flags-db-data:
+
+networks:
+  flags-network:
+    name: flags-dev-network
+    driver: bridge
